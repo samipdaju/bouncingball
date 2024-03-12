@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://yu5nmf1l6bma"]
+
+[ext_resource type="Script" path="res://RigidBody2D.gd" id="1_qe1i1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8aopq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou3p3"]
+radius = 59.3043
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+disable_mode = 1
+custom_integrator = true
+continuous_cd = 2
+linear_velocity = Vector2(0, 10)
+script = ExtResource("1_qe1i1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D"]
+position = Vector2(586, 181.5)
+scale = Vector2(108.122, 107)
+mesh = SubResource("SphereMesh_8aopq")
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+position = Vector2(586, 179)
+shape = SubResource("CircleShape2D_ou3p3")
+debug_color = Color(0.301961, 0.623529, 0.266667, 0.419608)
+
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
+[connection signal="body_exited" from="RigidBody2D" to="RigidBody2D" method="_on_body_exited"]
+[connection signal="body_entered" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_area_2d_body_entered"]

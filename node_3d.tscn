@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjdop4nybfw0d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jbwrr"]
+friction = 5.0
+bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d1ar"]
+albedo_color = Color(0, 0.596078, 0.886275, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_d32ue"]
+material = SubResource("StandardMaterial3D_6d1ar")
+radius = 3.0
+height = 6.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_otwkn"]
+points = PackedVector3Array(-0.546651, -2.93533, -0.271284, 0.553611, 2.93312, 0.277877, 0.734638, 2.83278, 0.642893, -2.63941, 0.364258, 1.37022, -0.910823, 0.365389, -2.83037, 2.74556, -0.639597, 1.00889, 0.0948591, -0.550372, 2.94102, 2.28047, -0.364032, -1.9092, -2.73485, 0.547201, -1.09157, 1.90246, 1.80806, -1.4427, -1.1773, 2.63343, -0.813538, -0.178645, 1.82123, 2.37123, 1.55047, -2.45669, 0.730887, -1.62736, -2.17411, 1.2712, -0.452095, -2.00367, -2.18289, -2.54019, -1.36231, -0.813757, 2.17271, 1.26476, 1.62992, 1.8141, -2.17275, -0.991947, -1.80822, 2.17386, 0.999256, 0.276587, 1.82013, -2.363, 2.74369, 1.18734, -0.179136, 0.916928, -0.365111, -2.82821, 0.458094, -2.18245, 2.00355, -1.54745, 0.182316, 2.55754, 1.64513, -0.455916, 2.46523, -1.81641, -0.727326, -2.27092, -1.71453, 1.44625, -1.98555, 2.84114, -0.915146, -0.270685, -2.55076, 1.55025, -0.269737, -1.35332, -1.2658, 2.35482, -2.73352, -0.912127, 0.824086, 0.911828, 1.45286, 2.45556)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l08ve"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cnfb7"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5678, 0)
+physics_material_override = SubResource("PhysicsMaterial_jbwrr")
+gravity_scale = 3.505
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.4042, 0)
+mesh = SubResource("SphereMesh_d32ue")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.4042, 0)
+shape = SubResource("ConvexPolygonShape3D_otwkn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.741415, -0.183816, 0.64538, 0, 0.961751, 0.273924, -0.671047, -0.203091, 0.713057, 48.6093, 20.6316, 53.7066)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.926984, 0.215279, 0.307175, -0.233644, -0.309263, 0.921828, 0.293448, -0.926289, -0.236383, 19.4164, 28.5728, -10.4858)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("BoxMesh_l08ve")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cnfb7")

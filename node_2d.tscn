@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4lcra7k6ohps"]
+
+[ext_resource type="PackedScene" uid="uid://yu5nmf1l6bma" path="res://rigid.tscn" id="2_jmy6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nmbx"]
+size = Vector2(1145.5, 69)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = -281.0
+offset_top = 849.0
+offset_right = 746.0
+offset_bottom = 2673.0
+rotation = -1.5708
+color = Color(0.164706, 0.188235, 0.188235, 1)
+
+[node name="Up" type="StaticBody2D" parent="."]
+position = Vector2(-1162, -143)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
+position = Vector2(1732, 140)
+shape = SubResource("RectangleShape2D_7nmbx")
+
+[node name="Down" type="StaticBody2D" parent="."]
+position = Vector2(183, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down"]
+position = Vector2(391, 710)
+shape = SubResource("RectangleShape2D_7nmbx")
+
+[node name="Left" type="StaticBody2D" parent="."]
+position = Vector2(181, 39)
+rotation = 0.261799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-59.164, 405.117)
+rotation = -1.8326
+shape = SubResource("RectangleShape2D_7nmbx")
+
+[node name="Right" type="StaticBody2D" parent="."]
+position = Vector2(178, 29)
+rotation = 0.261799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(1030.14, 112.203)
+rotation = -1.8326
+shape = SubResource("RectangleShape2D_7nmbx")
+
+[node name="Node2D" parent="." instance=ExtResource("2_jmy6g")]
+position = Vector2(-170, 217)
+
+[node name="Node2D2" parent="." instance=ExtResource("2_jmy6g")]
+position = Vector2(262, 145)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -45.0
+offset_right = 1124.0
+offset_bottom = 41.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 15.0
+offset_top = 718.0
+offset_right = 1163.0
+offset_bottom = 804.0
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -33.0
+offset_top = 808.0
+offset_right = 824.0
+offset_bottom = 898.0
+rotation = -1.5708
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 1108.0
+offset_top = 803.0
+offset_right = 1957.0
+offset_bottom = 892.0
+rotation = -1.57682
