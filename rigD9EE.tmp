@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://yu5nmf1l6bma"]
+[gd_scene load_steps=8 format=3 uid="uid://yu5nmf1l6bma"]
 
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="1_qe1i1"]
-[ext_resource type="Texture2D" uid="uid://c2xvfigxd8g6g" path="res://ball1.png" id="2_acxsh"]
+[ext_resource type="Texture2D" uid="uid://bu7pe65bftk2s" path="res://ball1.png" id="2_acxsh"]
+[ext_resource type="PackedScene" uid="uid://c3x2pxarv47rr" path="res://character.tscn" id="3_o4rpq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8b3d7"]
 friction = 0.75
 rough = true
 bounce = 0.47
+
+[sub_resource type="SphereMesh" id="SphereMesh_8aopq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ou3p3"]
 radius = 52.0
@@ -17,7 +20,7 @@ radius = 50.0
 [node name="Node2D" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(9, 188)
+position = Vector2(59, 190)
 physics_material_override = SubResource("PhysicsMaterial_8b3d7")
 custom_integrator = true
 continuous_cd = 2
@@ -26,8 +29,12 @@ linear_damp = 7.141
 angular_velocity = 2.61799
 script = ExtResource("1_qe1i1")
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D"]
+position = Vector2(585, 181)
+scale = Vector2(50, 49.481)
+mesh = SubResource("SphereMesh_8aopq")
+
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
-position = Vector2(2, -3)
 disable_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
@@ -36,13 +43,16 @@ shape = SubResource("CircleShape2D_ou3p3")
 debug_color = Color(0.756863, 0.294118, 0.866667, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(584, 180)
+position = Vector2(584, 181)
 shape = SubResource("CircleShape2D_r5odu")
 
 [node name="Ball1" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(583, 168)
-scale = Vector2(0.93617, 0.932927)
+position = Vector2(586, 181)
+scale = Vector2(0.24798, 0.247363)
 texture = ExtResource("2_acxsh")
+
+[node name="character2" parent="RigidBody2D" instance=ExtResource("3_o4rpq")]
+position = Vector2(1986, 841)
 
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
 [connection signal="body_exited" from="RigidBody2D" to="RigidBody2D" method="_on_body_exited"]
